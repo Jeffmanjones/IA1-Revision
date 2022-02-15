@@ -1,0 +1,100 @@
+ gcc -g p5final.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x85d: file p5final.c, line 27.
+(gdb) r
+Starting program: /home/runner/IA1-Revision/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5final.c:27
+27    n=input();
+(gdb) s
+input () at p5final.c:3
+3   {
+(gdb) n
+5     printf("Enter a number:\n");
+(gdb) n
+Enter a number:
+6     scanf("%f",&a);
+(gdb) n
+4
+7     return a;
+(gdb) n
+8   }
+(gdb) n
+main () at p5final.c:28
+28    sqrt=my_sqrt(n);
+(gdb) s
+my_sqrt (n=4) at p5final.c:11
+11    float sqrt=n;
+(gdb) n
+12    float temp=0;
+(gdb) n
+13    while(sqrt!=temp)
+(gdb) n
+15      temp=sqrt;
+(gdb) n
+16      sqrt=(temp+(n/temp))/2;
+(gdb) n
+13    while(sqrt!=temp)
+(gdb) n
+15      temp=sqrt;
+(gdb) n
+16      sqrt=(temp+(n/temp))/2;
+(gdb) n
+13    while(sqrt!=temp)
+(gdb) n
+15      temp=sqrt;
+(gdb) 
+16      sqrt=(temp+(n/temp))/2;
+(gdb) n
+13    while(sqrt!=temp)
+(gdb) n
+15      temp=sqrt;
+(gdb) n
+16      sqrt=(temp+(n/temp))/2;
+(gdb) n
+13    while(sqrt!=temp)
+(gdb) n
+15      temp=sqrt;
+(gdb) n
+16      sqrt=(temp+(n/temp))/2;
+(gdb) n
+13    while(sqrt!=temp)
+(gdb) n
+18    return sqrt;
+(gdb) n
+19  }
+(gdb) n
+main () at p5final.c:29
+29    output(n,sqrt);
+(gdb) s
+output (n=4, sqrt=2) at p5final.c:22
+22    printf("the square root of %f is %f",n,sqrt);
+(gdb) n
+23  }
+(gdb) n
+main () at p5final.c:30
+30    return 0;
+(gdb) n
+31  }(gdb) q
+A debugging session is active.
+
+    Inferior 1 [process 351] will be killed.
+
+Quit anyway? (y or n) y
