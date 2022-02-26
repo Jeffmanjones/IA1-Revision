@@ -1,0 +1,132 @@
+ gcc -g p11final.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa2a: file p11final.c, line 62.
+(gdb) r
+Starting program: /home/runner/test4-Jeffmanjones/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p11final.c:62
+62  {
+(gdb) n
+64    n=get_n();
+(gdb) s
+get_n () at p11final.c:9
+9   {
+(gdb) n
+11    printf("Enter number of complex numbers\n");
+(gdb) n
+Enter number of complex numbers
+12    scanf("%d",&n);
+(gdb) n
+3
+13    return n;
+(gdb) n
+14  }
+(gdb) n
+main () at p11final.c:65
+65    complex c[n];
+(gdb) n
+66    input_n_complex(n,c);
+(gdb) s
+input_n_complex (n=3, c=0x7fffe5bea640) at p11final.c:26
+26    for(int i=0;i<n;i++)
+(gdb) n
+28      c[i]=input_complex();
+(gdb) n
+Enter a complex number
+3
+1
+26    for(int i=0;i<n;i++)
+(gdb) n
+28      c[i]=input_complex();
+(gdb) n
+Enter a complex number
+1
+2
+26    for(int i=0;i<n;i++)
+(gdb) n
+28      c[i]=input_complex();
+(gdb) n
+Enter a complex number
+2
+2
+26    for(int i=0;i<n;i++)
+(gdb) n
+30  }
+(gdb) n
+main () at p11final.c:68
+68    sum=add_n_complex(n,c);
+(gdb) s
+add_n_complex (n=3, c=0x7fffe5bea640) at p11final.c:42
+42    tsum.real=0;
+(gdb) n
+43    tsum.imaginary=0;
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+46      tsum =add(tsum,c[i]);
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+46      tsum =add(tsum,c[i]);
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+46      tsum =add(tsum,c[i]);
+(gdb) n
+44    for(int i=0;i<n;i++)
+(gdb) n
+48    return tsum;
+(gdb) n
+49  }
+(gdb) n
+main () at p11final.c:69
+69    output(n,c,sum);
+(gdb) s
+output (n=3, c=0x7fffe5bea640, result=...) at p11final.c:53
+53    for(int i=0;i<n-1;i++)
+(gdb) n
+55      printf("%.1f+%.1fi + ",c[i].real, c[i].imaginary);
+(gdb) n
+53    for(int i=0;i<n-1;i++)
+(gdb) n
+55      printf("%.1f+%.1fi + ",c[i].real, c[i].imaginary);
+(gdb) n
+53    for(int i=0;i<n-1;i++)
+(gdb) n
+57    printf("%.1f+%.1fi",c[n-1].real, c[n-1].imaginary);
+(gdb) n
+58    printf(" is %.1f+%.1fi",result.real, result.imaginary);
+(gdb) n
+59  }
+(gdb) n
+main () at p11final.c:70
+70    return 0;
+(gdb) p n
+$1 = 3
+(gdb) p sum
+$2 = {real = 6, imaginary = 5}
+(gdb) p c
+$3 = {{real = 3, imaginary = 1}, {real = 1, imaginary = 2}, {real = 2, 
+    imaginary = 2}}
+(gdb) n
+71  }(gdb) c
+Continuing.
+3.0+1.0i + 1.0+2.0i + 2.0+2.0i is 6.0+5.0i[Inferior 1 (process 77) exited normally]
+(gdb) quit
